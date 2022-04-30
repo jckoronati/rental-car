@@ -2,3 +2,4 @@
 /dist
 /tmp
 .vscode
+yarn-error.log
