@@ -1,10 +1,16 @@
 # rental-car
-
 ### Tech Stack 
 
 Está aplicação foi realizada com o uso das seguitnes tecnologias:
 
 - NodeJS, Express, TS, Typescript, Docker e Postgres
+
+# Aplication Documentation
+
+### API Document
+
+A documentação da API foi descrita utilizando Swagger, e é possível encontra a mesma dentro da roda `/api-docs`.
+
 ### Migrations
 
 - Para realizar a criação de uma migration o comando que deve ser utilizado é o seguinte `yarn typeorm migration:create src/database/migrations/MigrationExample`
