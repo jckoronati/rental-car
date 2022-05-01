@@ -1,5 +1,9 @@
 # rental-car
+### Migrations
 
-## Configurações do projeto
+- Para realizar a criação de uma migration o comando que deve ser utilizado é o seguinte `yarn typeorm migration:create src/database/migrations/MigrationExample`
+    - Alterar o texto de *MigrationExample* para o nome da migration desejada
 
-Ao realizar o clone do repositório atentar ao fato da pasta tmp não estar disponível por padrão, a mesma deverá ser criada pois os arquivos de importação serão inseridos lá.
+- Para rodar as migrations é necessário realizar o seguinte comando `docker-compose exec app node --require ts-node/register ./node_modules/typeorm/cli.js migration:run -d src/database`
+
+Made with love ❤️
