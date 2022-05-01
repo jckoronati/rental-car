@@ -5,7 +5,7 @@ Está aplicação foi realizada com o uso das seguitnes tecnologias:
 
 - NodeJS, Express, TS, Typescript, Docker e Postgres
 
-# Aplication Documentation
+# App Docs
 
 ### API Document
 
