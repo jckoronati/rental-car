@@ -17,5 +17,6 @@ Está aplicação foi realizada com o uso das seguitnes tecnologias:
     - Alterar o texto de *MigrationExample* para o nome da migration desejada
 
 - Para rodar as migrations é necessário realizar o seguinte comando `docker-compose exec app node -r ts-node/register ./node_modules/typeorm/cli.js migration:run -d ./data-source`
-
+    - Revert `docker-compose exec app node -r ts-node/register ./node_modules/typeorm/cli.js migration:revert -d ./data-source`
+    
 Made with love ❤️
