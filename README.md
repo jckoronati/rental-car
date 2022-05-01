@@ -9,7 +9,7 @@ Está aplicação foi realizada com o uso das seguitnes tecnologias:
 
 ### API Document
 
-A documentação da API foi descrita utilizando Swagger, e é possível encontra a mesma acessando a rota `/api-docs`.
+É possível encontrar a documentação da API acessando a rota `/api-docs`.
 
 ### Migrations
 
