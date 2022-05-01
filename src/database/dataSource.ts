@@ -7,4 +7,5 @@ export const AppDataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentalcar',
+  migrations: ['src/database/migrations/*.ts'],
 });
