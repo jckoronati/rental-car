@@ -11,8 +11,10 @@
     "paths": {
         "/categories": {
             "post": {
-                "tags": ["Category"],
-                "summary": "Category post",
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Category POST",
                 "description": "Enable to create a new category for rental cars",
                 "requestBody": {
                     "content": {
@@ -45,8 +47,10 @@
                 }
             },
             "get": {
-                "tags": ["Category"],
-                "summary": "Categories get",
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Categories GET",
                 "description": "Enable to get all categories",
                 "responses": {
                     "200": {
@@ -70,6 +74,74 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "/categories/import": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Categories IMPORT",
+                "description": "Enable to import categories from a file",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "201": {
+                    "description": "Created"
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": [
+                    "Specification"
+                ],
+                "summary": "Specification POST",
+                "description": "Create a new Specification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Specification"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Specification already exists"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Specification": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
                 }
             }
         }
