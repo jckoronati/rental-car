@@ -9,7 +9,7 @@ Está aplicação foi realizada com o uso das seguitnes tecnologias:
 
 ### API Document
 
-É possível encontrar a documentação da API acessando a rota `/api-docs`.
+Você pode acessa a documentação através da rota `/api-docs`.
 
 ### Migrations
 
