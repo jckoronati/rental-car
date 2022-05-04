@@ -1,3 +1,4 @@
+import { AppError } from '../../../../errors/AppError';
 import { SpecificationRepositoryInMemory } from '../../repositories/in-memory/SpecificationRepositoryInMemory';
 import { CreateSpecificationUseCase } from './CreateSpecificationUseCase';
 
@@ -25,11 +26,35 @@ describe('Create a specification', () => {
 
     const { name, description } = specification;
 
-    await specificationUseCase.execute({ name, description });
+    await specificationUseCase.execute({
+      name,
+      description,
+    });
 
     const specificationCreated =
       await specificationRepositoryInMemory.findByName(name);
 
     expect(specificationCreated).toHaveProperty('id');
+  });
+
+  it('should not be able to create a specification when specification name already in use', async () => {
+    expect(async () => {
+      const specification: IRequest = {
+        name: 'Direção hidraulica',
+        description: 'Carros com direção hidraulica',
+      };
+
+      const { name, description } = specification;
+
+      await specificationUseCase.execute({
+        name,
+        description,
+      });
+
+      await specificationUseCase.execute({
+        name,
+        description,
+      });
+    }).rejects.toBeInstanceOf(AppError);
   });
 });
