@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 
 import { AppDataSource } from '../../../../../data-source';
-import { Category } from '../../entities/Category';
+import { Category } from '../../infra/typeorm/entities/Category';
 import {
   ICategoryRepository,
   ICreateCategoryDTO,

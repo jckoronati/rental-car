@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 
-import { User } from './src/modules/accounts/entities/User';
-import { Category } from './src/modules/cars/entities/Category';
-import { Specification } from './src/modules/cars/entities/Specification';
+import { User } from './src/modules/accounts/infra/typeorm/entities/User';
+import { Category } from './src/modules/cars/infra/typeorm/entities/Category';
+import { Specification } from './src/modules/cars/infra/typeorm/entities/Specification';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
