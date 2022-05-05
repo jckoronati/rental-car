@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 
-import { UserRepository } from '../../modules/accounts/repositories/implementations/UserRepository';
+import { UserRepository } from '../../modules/accounts/infra/typeorm/repositories/UserRepository';
 import { IUserRepository } from '../../modules/accounts/repositories/IUserRepository';
 import { ICategoryRepository } from '../../modules/cars/repositories/ICategoryRepository';
 import { CategoryRepository } from '../../modules/cars/repositories/implementations/CategoryRepository';
