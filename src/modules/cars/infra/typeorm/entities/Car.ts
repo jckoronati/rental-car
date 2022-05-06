@@ -44,7 +44,7 @@ class Car {
   category_id: string;
 
   @CreateDateColumn()
-  created_at: Date = new Date();
+  created_at: Date;
 
   constructor() {
     if (!this.id) {

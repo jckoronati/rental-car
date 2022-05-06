@@ -5,21 +5,10 @@ import { ICreateCarsDTO } from '../../dto/ICreateCarsDTO';
 import { Car } from '../../infra/typeorm/entities/Car';
 import { ICarsRepository } from '../../repositories/ICarsRepository';
 
-interface IRequest {
-  name: string;
-  description: string;
-  daily_rate: number;
-  license_plate: string;
-  fine_amount: number;
-  brand: string;
-  category_id: string;
-  id: string;
-}
-
-// @injectable()
+@injectable()
 class CreateCarUseCase {
   constructor(
-    // @inject('CarsRepository')
+    @inject('CarsRepository')
     private carsRepository: ICarsRepository,
   ) {}
 
