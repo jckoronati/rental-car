@@ -18,7 +18,6 @@
 ## Regra de Negócio
 
 - **Cadastro de Carros**: Não deve ser possível cadastrar um carro uma placa já existente
-- **Cadastro de Carros**: Não deve ser possível alterar a placa de um carro já cadastrado
 - **Cadastro de Carros**: O carro deve ser cadastrado como disponível por padrão
 - **Cadastro de Carros**: Apenas um usuário admnistrador deve ser responsável por realizar o cadastro
 - **Listagem de Carros**: Para realizar a listagem não é necessário que o usuário esteja logado
