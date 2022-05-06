@@ -20,9 +20,21 @@ describe('Create Car', () => {
       fine_amount: 1550,
       license_plate: 'TST-30803',
       name: 'Carro teste',
-      available: true,
-      id: '11111111',
     });
+  });
+
+  it('should be create a car which are available by default', async () => {
+    const car = await createCarUseCase.execute({
+      brand: 'Teste marca 2',
+      category_id: '',
+      daily_rate: 550,
+      description: 'Teste de descrição 2',
+      fine_amount: 1250,
+      license_plate: 'TST-30803',
+      name: 'Carro teste disponibilidade',
+    });
+
+    expect(car.available).toBe(true);
   });
 
   it('should not be able to create a car when license plate already in use', async () => {
@@ -35,8 +47,6 @@ describe('Create Car', () => {
         fine_amount: 1550,
         license_plate: 'TST-30803',
         name: 'Carro teste',
-        available: true,
-        id: '11111111',
       });
 
       await createCarUseCase.execute({
@@ -47,8 +57,6 @@ describe('Create Car', () => {
         fine_amount: 110,
         license_plate: 'TST-30803',
         name: 'Outro carro teste',
-        available: true,
-        id: '22222222',
       });
     }).rejects.toBeInstanceOf(AppError);
   });

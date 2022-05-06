@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { v4 as uuid } from 'uuid';
 
 class Car {
-  id: string;
+  id?: string = uuid();
 
   name: string;
 
@@ -9,7 +10,7 @@ class Car {
 
   daily_rate: number;
 
-  available: boolean;
+  available?: boolean = true;
 
   license_plate: string;
 
@@ -19,7 +20,7 @@ class Car {
 
   category_id: string;
 
-  created_at: Date;
+  created_at: Date = new Date();
 }
 
 export { Car };

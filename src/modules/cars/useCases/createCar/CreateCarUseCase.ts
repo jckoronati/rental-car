@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '../../../../shared/errors/AppError';
 import { ICreateCarsDTO } from '../../dto/ICreateCarsDTO';
+import { Car } from '../../infra/typeorm/entities/Car';
 import { ICarsRepository } from '../../repositories/ICarsRepository';
 
 interface IRequest {
@@ -23,7 +24,6 @@ class CreateCarUseCase {
   ) {}
 
   async execute({
-    available,
     brand,
     daily_rate,
     description,
@@ -31,16 +31,14 @@ class CreateCarUseCase {
     license_plate,
     name,
     category_id,
-    id,
-  }: ICreateCarsDTO): Promise<void> {
+  }: ICreateCarsDTO): Promise<Car> {
     const carLicensePlateAlreadyInUse =
       await this.carsRepository.findByLicensePlate(license_plate);
 
     if (carLicensePlateAlreadyInUse)
       throw new AppError('License plate already in use');
 
-    await this.carsRepository.create({
-      available,
+    const car = await this.carsRepository.create({
       brand,
       daily_rate,
       description,
@@ -48,8 +46,9 @@ class CreateCarUseCase {
       license_plate,
       name,
       category_id,
-      id,
     });
+
+    return car;
   }
 }
 
