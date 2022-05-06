@@ -3,7 +3,6 @@
 ## Funcionais
 
 - **Cadastro de Carros**: Deve ser possível cadastrar um novo carro
-- **Cadastro de Carros**: Deve ser possível listar todas categorias
 - **Listagem de Carros**: Deve ser possível realizar a listagem dos carros disponíveis
 - **Cadastro de especificações do carro**: Deve ser possível cadastrar uma especificação para um carro
 - **Cadastro de especificações do carro**: Deve ser possível listar todas especificações 
