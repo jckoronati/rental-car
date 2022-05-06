@@ -8,7 +8,7 @@ import { ICarsRepository } from '../../repositories/ICarsRepository';
 @injectable()
 class CreateCarUseCase {
   constructor(
-    @inject('CarsRepository')
+    @inject('CarRepository')
     private carsRepository: ICarsRepository,
   ) {}
 
