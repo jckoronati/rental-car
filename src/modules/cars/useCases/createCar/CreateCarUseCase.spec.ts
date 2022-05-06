@@ -12,7 +12,7 @@ describe('Create Car', () => {
   });
 
   it('should be able to create a car', async () => {
-    await createCarUseCase.execute({
+    const car = await createCarUseCase.execute({
       brand: 'Teste marca',
       category_id: '',
       daily_rate: 128,
@@ -21,6 +21,8 @@ describe('Create Car', () => {
       license_plate: 'TST-30803',
       name: 'Carro teste',
     });
+
+    expect(car).toHaveProperty('id');
   });
 
   it('should be create a car which are available by default', async () => {
@@ -35,6 +37,20 @@ describe('Create Car', () => {
     });
 
     expect(car.available).toBe(true);
+  });
+
+  it('should be create a car and then set a date of creation', async () => {
+    const car = await createCarUseCase.execute({
+      brand: 'Teste marca 2',
+      category_id: '',
+      daily_rate: 550,
+      description: 'Teste de descrição 2',
+      fine_amount: 1250,
+      license_plate: 'TST-30803',
+      name: 'Carro teste disponibilidade',
+    });
+
+    expect(car.created_at).toBeInstanceOf(Date);
   });
 
   it('should not be able to create a car when license plate already in use', async () => {
