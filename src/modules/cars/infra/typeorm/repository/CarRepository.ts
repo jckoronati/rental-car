@@ -12,12 +12,22 @@ class CarRepository implements ICarsRepository {
     this.repository = AppDataSource.getRepository(Car);
   }
 
+  async findById(id: string): Promise<Car> {
+    const query = this.repository
+      .createQueryBuilder('cars')
+      .where('id = :id', { id });
+
+    const car = await query.getOne();
+
+    return car;
+  }
+
   async findAllAvailable(
     brand?: string,
     category_id?: string,
     name?: string,
   ): Promise<Car[]> {
-    const carsQuery = await this.repository
+    const carsQuery = this.repository
       .createQueryBuilder('cars')
       .where('available = :available', { available: true });
 
