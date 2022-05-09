@@ -39,10 +39,6 @@ class CarRepository implements ICarsRepository {
     return cars;
   }
 
-  async listAllAvailable(): Promise<Car[]> {
-    throw new Error('Method not implemented.');
-  }
-
   async create({
     brand,
     category_id,
