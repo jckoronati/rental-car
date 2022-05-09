@@ -37,10 +37,13 @@ describe('Add Specification to Car', () => {
 
     const specification_id = [specification.id];
 
-    await addSpecificationToCar.execute({
+    const specificationsToCar = await addSpecificationToCar.execute({
       car_id: car.id,
       specification_id,
     });
+
+    expect(specificationsToCar).toHaveProperty('specifications');
+    expect(specificationsToCar.specifications.length).toBe(1);
   });
 
   it('should not be able to add a specification when car does not exists', async () => {
