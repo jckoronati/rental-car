@@ -10,11 +10,13 @@ interface IRequest {
   specification_id: string[];
 }
 
-// @injectable()
+@injectable()
 class AddSpecificationToCarUseCase {
   constructor(
-    // @inject('CarRepository')
+    @inject('CarRepository')
     private carRepository: ICarsRepository,
+
+    @inject('SpecificationRepository')
     private specificationRepository: ISpecificationRepository,
   ) {}
 
