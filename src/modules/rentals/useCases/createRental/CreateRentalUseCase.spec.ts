@@ -42,7 +42,7 @@ describe('Create Rental', () => {
     }).rejects.toBeInstanceOf(AppError);
   });
 
-  it('should not be able to realize a rental when car is unavaible', async () => {
+  it('should not be able to realize a rental when car is unavailable', async () => {
     expect(async () => {
       await createRentalUseCase.execute({
         user_id: '12345',
