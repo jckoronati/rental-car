@@ -57,4 +57,14 @@ describe('Create Rental', () => {
       });
     }).rejects.toBeInstanceOf(AppError);
   });
+
+  it('should not be able to rent a car if use time had less than 24 hours', async () => {
+    expect(async () => {
+      await createRentalUseCase.execute({
+        user_id: '23212',
+        car_id: 'u79',
+        expected_return_date: dayjs().toDate(),
+      });
+    }).rejects.toBeInstanceOf(AppError);
+  });
 });
