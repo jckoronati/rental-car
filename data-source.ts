@@ -5,6 +5,7 @@ import { Car } from './src/modules/cars/infra/typeorm/entities/Car';
 import { CarsImages } from './src/modules/cars/infra/typeorm/entities/CarsImages';
 import { Category } from './src/modules/cars/infra/typeorm/entities/Category';
 import { Specification } from './src/modules/cars/infra/typeorm/entities/Specification';
+import { Rentals } from './src/modules/rentals/infra/typeorm/entities/Rentals';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -13,7 +14,7 @@ export const AppDataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentalcar',
-  entities: [Category, Specification, User, Car, CarsImages],
+  entities: [Category, Specification, User, Car, CarsImages, Rentals],
   migrations: ['./src/database/migrations/*.ts'],
 });
 
