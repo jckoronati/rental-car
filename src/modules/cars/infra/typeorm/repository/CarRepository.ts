@@ -21,7 +21,7 @@ class CarRepository implements ICarsRepository {
   async updateAvailable(id: string, available: boolean): Promise<void> {
     await this.repository
       .createQueryBuilder('cars')
-      .update('cars.available = :available')
+      .update()
       .set({ available })
       .where('cars.id = :id')
       .setParameters({ id })
