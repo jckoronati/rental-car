@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { IDateProvider } from '../../../../shared/container/providers/DateProvider/IDateProvider';
 import { AppError } from '../../../../shared/errors/AppError';
+import { ICarsRepository } from '../../../cars/repositories/ICarsRepository';
 import { Rentals } from '../../infra/typeorm/entities/Rentals';
 import { IRentalsRepository } from '../../repositories/IRentalsRepository';
 
@@ -13,13 +14,13 @@ interface IRequest {
 
 @injectable()
 class CreateRentalUseCase {
-  private minimumTime = 24;
-
   constructor(
     @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository,
     @inject('DateProvider')
     private dateProvider: IDateProvider,
+    @inject('CarRepository')
+    private carRepository: ICarsRepository,
   ) {}
 
   async execute({
@@ -27,6 +28,8 @@ class CreateRentalUseCase {
     car_id,
     expected_return_date,
   }: IRequest): Promise<Rentals> {
+    const minimumHour = 24;
+
     const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(
       car_id,
     );
@@ -45,14 +48,16 @@ class CreateRentalUseCase {
       expected_return_date,
     );
 
-    if (compare < this.minimumTime)
-      throw new AppError('The rental needs to have 24 hours minimum');
+    if (compare < minimumHour)
+      throw new AppError('The rental needs to have 24 hours minimum!');
 
     const rental = await this.rentalsRepository.create({
       car_id,
       user_id,
       expected_return_date,
     });
+
+    await this.carRepository.updateAvailable(car_id, false);
 
     return rental;
   }
