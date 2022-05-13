@@ -12,6 +12,12 @@ class RentalsRepository implements IRentalsRepository {
     this.repository = AppDataSource.getRepository(Rentals);
   }
 
+  async findById(id: string): Promise<Rentals> {
+    const rental = await this.repository.findOneBy({ id });
+
+    return rental;
+  }
+
   async findOpenRentalByCar(car_id: string): Promise<Rentals> {
     const car = await this.repository.findOneBy({ car_id });
 
