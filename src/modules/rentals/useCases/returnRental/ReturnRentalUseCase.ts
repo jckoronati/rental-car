@@ -55,7 +55,7 @@ class ReturnRentalUseCase {
     rental.amount = amount;
 
     await this.rentalsRepository.create(rental);
-    await this.carRepository.updateAvailable(car.id, !car.available);
+    await this.carRepository.updateAvailable(car.id, true);
 
     return rental;
   }
