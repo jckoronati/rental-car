@@ -29,7 +29,7 @@ export const AppDataSource = new DataSource({
 
 AppDataSource.initialize()
   .then(async () => {
-    console.log('Initilializing database connection');
+    console.log('Initializing database connection');
   })
   .catch(err =>
     console.log('Error during process Data Source Initialization', err),
