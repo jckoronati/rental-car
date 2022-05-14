@@ -8,6 +8,10 @@ class DayJSDateProvider implements IDateProvider {
     dayjs.extend(utc);
   }
 
+  addDays(days: number): Date {
+    return dayjs().add(days, 'days').toDate();
+  }
+
   compareInDays(start_date: Date, end_date: Date): number {
     const endDateUTC = this.convertToUTC(end_date);
     const startDateUTD = this.convertToUTC(start_date);
