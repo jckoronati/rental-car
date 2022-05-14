@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 
 import { User } from './src/modules/accounts/infra/typeorm/entities/User';
+import { UserTokens } from './src/modules/accounts/infra/typeorm/entities/UserTokens';
 import { Car } from './src/modules/cars/infra/typeorm/entities/Car';
 import { CarsImages } from './src/modules/cars/infra/typeorm/entities/CarsImages';
 import { Category } from './src/modules/cars/infra/typeorm/entities/Category';
@@ -14,7 +15,15 @@ export const AppDataSource = new DataSource({
   username: 'docker',
   password: 'ignite',
   database: 'rentalcar',
-  entities: [Category, Specification, User, Car, CarsImages, Rentals],
+  entities: [
+    Category,
+    Specification,
+    User,
+    Car,
+    CarsImages,
+    Rentals,
+    UserTokens,
+  ],
   migrations: ['./src/database/migrations/*.ts'],
 });
 
