@@ -1,7 +1,7 @@
 import { IUserTokenDTO } from '../dto/IUserTokenDTO';
 import { UserTokens } from '../infra/typeorm/entities/UserTokens';
 
-interface IUserTokens {
+interface IUserTokensRepository {
   create({
     expires_date,
     refresh_token,
@@ -9,4 +9,4 @@ interface IUserTokens {
   }: IUserTokenDTO): Promise<UserTokens>;
 }
 
-export { IUserTokens };
+export { IUserTokensRepository };
