@@ -7,7 +7,7 @@ interface IUserTokensRepository {
     refresh_token,
     user_id,
   }: IUserTokenDTO): Promise<UserTokens>;
-  findByUserId(user_id: string): Promise<UserTokens[]>;
+  findByUserId(user_id: string, refresh_token: string): Promise<UserTokens>;
 }
 
 export { IUserTokensRepository };
