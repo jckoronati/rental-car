@@ -12,6 +12,10 @@ class UserTokensRepository implements IUserTokensRepository {
     this.repository = AppDataSource.getRepository(UserTokens);
   }
 
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
+
   async findByUserId(
     user_id: string,
     refresh_token: string,
