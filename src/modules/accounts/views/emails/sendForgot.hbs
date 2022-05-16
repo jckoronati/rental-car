@@ -1,0 +1,17 @@
+<style>
+    .container {
+        width: 100%;
+        max-width: 800px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<div class="container">
+    <p>Olá, {{ name }}</p>
+    <br>
+    <p>Este e-mail foi encaminhado para ajustar sua senha, no link a seguir é possível realizar este ajuste.</p>
+    <a href={{ link }}>Clique aqui.</a>
+    <p>Caso você não tenha solicitado o reenvio de senha, por favor entre em contato com o administrador suporte@rentalcar.com.br</p>
+    <br>
+    <p>RentalCar - {{{dateFormat "L" timeStamp}}} - {{{dateFormat "LT" timeStamp}}}</p>
+</div>
