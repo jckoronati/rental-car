@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { inject, injectable } from 'tsyringe';
 import { v4 as uuid } from 'uuid';
 
@@ -21,11 +22,20 @@ class SendForgotPasswordMailUseCase {
   ) {}
 
   async execute(email: string) {
-    const timeToExpire = 3;
-
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) throw new AppError('User not found');
+
+    const timeToExpire = 3;
+
+    const templatePath = resolve(
+      __dirname,
+      '..',
+      '..',
+      'views',
+      'emails',
+      'sendForgot.hbs',
+    );
 
     const token = uuid();
 
@@ -37,10 +47,16 @@ class SendForgotPasswordMailUseCase {
       user_id: user.id,
     });
 
+    const variables = {
+      name: user.name,
+      link: `${process.env.FORGOT_MAIL_URL_DEV}${token}`,
+    };
+
     await this.mailProvider.sendMail(
       email,
       'Recuperação de senha',
-      `O link para recuperar sua senha: ${token}`,
+      variables,
+      templatePath,
     );
   }
 }
