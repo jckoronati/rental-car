@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { SendForgotPasswordMailUseCase } from './SendForgotPassowordMailUseCase';
+import { SendForgotPasswordMailUseCase } from './SendForgotPasswordMailUseCase';
 
 interface IRequest {
   email: string;
