@@ -46,3 +46,5 @@ class ResetPasswordUseCase {
     await this.userTokensRepository.deleteById(userToken.id);
   }
 }
+
+export { ResetPasswordUseCase };
