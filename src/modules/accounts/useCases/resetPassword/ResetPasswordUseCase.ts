@@ -15,7 +15,7 @@ class ResetPasswordUseCase {
   ) {}
 
   async execute({ password, token }: IRequest) {
-    const userToken = '';
+    const userToken = this.userTokensRepository.findByRefreshToken(token);
 
     if (!userToken) throw new AppError('Invalid token!');
   }
