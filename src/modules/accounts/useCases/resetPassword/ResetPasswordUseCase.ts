@@ -35,7 +35,7 @@ class ResetPasswordUseCase {
       throw new AppError('Expired token!');
     }
 
-    const user = await this.userRepository.findById(userToken.id);
+    const user = await this.userRepository.findById(userToken.user_id);
 
     if (!user) throw new AppError('User not found');
 
